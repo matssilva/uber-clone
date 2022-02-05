@@ -4,16 +4,31 @@ import HomeScreen from './src/screens/HomeScreen';
 import { store } from './src/store/store';
 import tw from 'twrnc';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MapScreen from './src/screens/MapScreen';
 
 export default function App() {
+
+  const Stack = createNativeStackNavigator();
+
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <SafeAreaView style={tw`bg-white h-full`}>
-          <HomeScreen />
-        </SafeAreaView>
-      </SafeAreaProvider>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <SafeAreaView style={tw`bg-white h-full`}>
+            <Stack.Navigator>
+              <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
+                headerShown: false
+              }} />
+              <Stack.Screen name="MapScreen" component={MapScreen} options={{
+                headerShown: false
+              }} />
+            </Stack.Navigator>
+            {/* <HomeScreen /> */}
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </NavigationContainer>
     </Provider>
 
   );

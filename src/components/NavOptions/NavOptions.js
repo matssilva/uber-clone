@@ -1,8 +1,9 @@
-import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
+import { FlatList, StyleSheet, Text, Image } from 'react-native';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import tw from 'twrnc';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
   {
@@ -20,9 +21,14 @@ const data = [
 ];
 
 const NavOptions = () => {
+  const navigation = useNavigation();
+
   const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}>
+      <TouchableOpacity
+        style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}
+        onPress={() => navigation.navigate(item.screen)}
+      >
         <Image
           source={{
             uri: item.image,

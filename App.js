@@ -16,17 +16,15 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-          <SafeAreaView style={tw`bg-white h-full`}>
-            <Stack.Navigator>
-              <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
-                headerShown: false
-              }} />
-              <Stack.Screen name="MapScreen" component={MapScreen} options={{
-                headerShown: false
-              }} />
-            </Stack.Navigator>
-            {/* <HomeScreen /> */}
-          </SafeAreaView>
+          <Stack.Navigator>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
+              headerShown: false
+            }} />
+            <Stack.Screen name="MapScreen" component={MapScreen} options={{
+              headerShown: false
+            }} />
+          </Stack.Navigator>
+          {/* <HomeScreen /> */}
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>
